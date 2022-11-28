@@ -103,6 +103,31 @@ app.delete( '/students/:id', ( req, res ) => {
 } );
 
 // add a new record to the database table
+app.post( "/students", (req, res) => {
+    let student = req.body;
+    // console.log(student)
+    let sql = `SET @id=?; SET @name=?; SET @course=?; SET @duration=?; SET @age=?; 
+    CALL curveAddOrEdit(@id, @name, @course, @duration, @age);`;
+
+    mysqlConnection.query( sql, [ student.id, student.name, student.course, student.duration, student.age ], (err, rows, fields) => {
+        // console.log( rows );
+        if ( !err ) {
+            rows.forEach( (element) => {
+            if ( element.constructor == Array ) {
+                res.status( 200 ).json( {
+                    message: "New Student has been created.",
+                    data: "Student ID: " + element[ 0 ].id
+                })
+                // res.send("Student ID" + element[ 0 ].id)
+            }else{
+                console.log("No student found")
+            }
+        });
+        } else {
+            console.log( err.message );
+        }
+    });
+});
 
 // create a port
 const port = 3030;
