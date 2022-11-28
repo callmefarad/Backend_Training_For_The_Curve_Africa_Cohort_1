@@ -1,0 +1,16 @@
+{
+  "name": "http_html",
+  "version": "1.0.0",
+  "description": "",
+  "main": "http_html.js",
+  "scripts": {
+    "start": "node pract.js",
+    "dev": "nodemon pract.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}

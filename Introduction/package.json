@@ -1,0 +1,20 @@
+{
+  "name": "introduction",
+  "version": "1.0.0",
+  "description": "working with global state",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "node",
+    "global",
+    "module"
+  ],
+  "author": "Ubani Friday",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}

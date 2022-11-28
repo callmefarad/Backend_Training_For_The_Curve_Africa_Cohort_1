@@ -1,0 +1,20 @@
+{
+  "name": "http_text",
+  "version": "1.0.0",
+  "description": "implementing a simple http server",
+  "main": "httpText.js",
+  "scripts": {
+    "start": "node httpText.js",
+    "dev": "nodemon httpText.js"
+  },
+  "keywords": [
+    "node",
+    "nodemon",
+    "http"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
