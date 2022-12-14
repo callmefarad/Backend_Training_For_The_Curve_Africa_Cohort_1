@@ -1,5 +1,5 @@
 import express from 'express';
-import {allSales, singleSale, newSale} from '../controllers/saleController.js'
+import {allSales, singleSale, newSale, updateSale, deleteSale} from '../controllers/saleController.js'
 
 const saleRouter = express.Router();
 
@@ -9,5 +9,9 @@ saleRouter.get( '/sales', allSales );
 saleRouter.get( '/sales/:id', singleSale );
 // endpoint to create a sale
 saleRouter.post( '/sales', newSale );
+// endpoint to update an existing sale
+saleRouter.patch( '/sales/:id', updateSale )
+// endpoint to remove a sale from the database table
+saleRouter.delete( '/sales/:id', deleteSale)
 
 export default saleRouter;
