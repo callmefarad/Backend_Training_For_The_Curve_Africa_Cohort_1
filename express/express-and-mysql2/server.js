@@ -2,7 +2,6 @@
 const mysql = require('mysql');
 // import express library
 const express = require( 'express' );
-const { json } = require( 'express' );
 
 // create an application instance
 const app = express();
@@ -127,6 +126,25 @@ app.post( "/students", (req, res) => {
             console.log( err.message );
         }
     });
+} );
+
+// update record from the database tables
+app.put( "/students", ( req, res ) => {
+    let student = req.body;
+    let sql = `SET @id=?; SET @name=?; SET @course=?; SET @duration=?; SET @age=?;
+    CALL curveAddOrEdit(@id, @name, @course, @duration, @age);`;
+
+    // query the database base on the procedure
+    mysqlConnection.query( sql, [ student.id, student.name, student.course, student.duration, student.age ], ( error, rows, fields ) => {
+        if ( !error) {
+            res.status( 200 ).json( {
+                message: "Updated successfully.",
+                data: rows
+            });
+        } else {
+            console.log(error.message)
+        }
+    });
 });
 
 // create a port
@@ -134,3 +152,5 @@ const port = 3030;
 app.listen( port, () => {
     console.log( 'listening on port: ' + port );
 } );
+
+let test = "";
