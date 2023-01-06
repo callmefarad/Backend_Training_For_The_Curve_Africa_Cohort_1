@@ -1,6 +1,7 @@
 // const Student = require("../models/student");
 const models = require( "../models" ); // loads the index.js file
 const studentModel = models.Student;
+const Validator = require( 'fastest-validator' );
 
 /*
 @ROUTE 'localhost:1111/api/'
@@ -55,13 +56,30 @@ const allStudent = async ( req, res ) => {
 */
 const addStudent = async (req, res) => {
     try {
-        let newStudent = req.body;
-        const createdStudent = await studentModel.create( newStudent );
-        if ( !createdStudent ) {
-            res.status( 400 ).json( {
-                message: "There was a problem trying to create new student."
+        
+        const student = {
+            studentName: req.body.studentName,
+            studentScore: req.body.studentScore
+        }
+
+        // define the object using validator schema
+        const studentSchema = {
+            studentName: { type: 'string', optional: false, min: '3' },
+            studentScore: {type: 'number', optional: false}
+        }
+
+        // create an instance of the validator class
+        const v = new Validator();
+        const validatorResponse = v.validate( student, studentSchema );
+
+        // check for validation errors
+        if ( validatorResponse !== true ) {
+            return res.status( 400 ).json( {
+                message: 'Validation Failed',
+                errors: validatorResponse
             })
         } else {
+            const createdStudent = await studentModel.create( student );
             res.status( 201 ).json( {
                 message: "New student was created.",
                 data: createdStudent
