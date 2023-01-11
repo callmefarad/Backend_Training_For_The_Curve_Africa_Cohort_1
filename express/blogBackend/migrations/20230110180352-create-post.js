@@ -18,6 +18,12 @@ module.exports = {
       postImage: {
         type: Sequelize.STRING
       },
+      cloudUrl: {
+        type: Sequelize.STRING
+      },
+      cloudId: {
+        type: Sequelize.STRING
+      },
       content: {
         type: Sequelize.STRING
       },

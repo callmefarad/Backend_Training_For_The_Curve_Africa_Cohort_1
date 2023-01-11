@@ -17,6 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     desc: DataTypes.STRING,
     postImage: DataTypes.STRING,
+    cloudUrl: DataTypes.STRING,
+    cloudId: DataTypes.STRING,
     content: DataTypes.STRING,
     commentId: DataTypes.INTEGER
   }, {
