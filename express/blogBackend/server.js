@@ -1,5 +1,6 @@
 const express = require( 'express' );
 const postRouter = require( './routers/postRoute' );
+const userRouter = require( './routers/userRoute' );
 const PORT = 1000;
 
 const app = express();
@@ -15,6 +16,7 @@ app.get('/', (req, res)=>{
 app.use('/uploaded-image', express.static(process.cwd() + '/uploads'));
 // default route
 app.use( '/api', postRouter );
+app.use( '/api', userRouter );
 
 app.listen(PORT, ()=>{
     console.log('listening on port ' + PORT);

@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     cloudUrl: DataTypes.STRING,
     cloudId: DataTypes.STRING,
     content: DataTypes.STRING,
-    commentId: DataTypes.INTEGER
+    commentId: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'post',

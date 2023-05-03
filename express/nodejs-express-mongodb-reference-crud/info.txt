@@ -1,0 +1,21 @@
+This is a blog model with a normalized model. The normalization is also referred to as "reference system".
+This model is employed when the child model is to contain large amount of data.
+The reference system is used to create either a parent to child referencing or a child to parent referencing.
+
+* The parent to child referencing is technical but has proven to be the best option where large amount of data is to be contained in the child model, WHILE the child to parent referencing is considered when the amount of data contained in the child model is less than thirty (30) and is not always referenced.
+
+This tutorial will cover both phases so we can see how this is implemented.
+
+Technologies used are:
+- JavaScript (High level programming language)
+- NodeJs (Runtime environment for javascript application)
+- MongoDB (Non relational database)
+- Atlas (online database storage)
+
+Dependencies used are:
+- express
+- mongoose
+- multer
+- cloudinary
+- bcrypt
+- jsonwebtoken
